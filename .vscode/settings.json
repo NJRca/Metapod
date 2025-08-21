@@ -1,0 +1,40 @@
+{
+  "python.defaultInterpreterPath": "python3",
+  "python.terminal.activateEnvironment": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": [
+    "test_metapod.py"
+  ],
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/node_modules": true,
+    "**/.pytest_cache": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "terminal.integrated.env.osx": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "tasks.showOutput": "always",
+  "metapod.pythonPath": "python3",
+  "metapod.agentPath": "${workspaceFolder}",
+  "metapod.autonomyLevel": "interactive",
+  "metapod.riskTolerance": "medium",
+  "metapod.stackPreference": "auto-detect",
+  "metapod.enableResearch": true,
+  "metapod.showProgressNotifications": true
+}

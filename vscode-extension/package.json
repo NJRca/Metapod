@@ -1,0 +1,197 @@
+{
+  "name": "metapod-agent",
+  "displayName": "Metapod - Autonomous Backend Refactor Agent",
+  "description": "Autonomous backend refactor and hardening agent for production-grade applications",
+  "version": "1.0.0",
+  "publisher": "metapod",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "refactoring",
+    "autonomous",
+    "backend",
+    "architecture",
+    "security",
+    "agent",
+    "ai"
+  ],
+  "activationEvents": [
+    "onCommand:metapod.activate",
+    "onCommand:metapod.refactor",
+    "onCommand:metapod.research",
+    "onLanguage:python",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:go"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "metapod.activate",
+        "title": "Activate Metapod Agent",
+        "category": "Metapod"
+      },
+      {
+        "command": "metapod.refactor",
+        "title": "Start Autonomous Refactoring",
+        "category": "Metapod",
+        "icon": "$(tools)"
+      },
+      {
+        "command": "metapod.research",
+        "title": "Research Best Practices",
+        "category": "Metapod",
+        "icon": "$(search)"
+      },
+      {
+        "command": "metapod.status",
+        "title": "Show Refactoring Status",
+        "category": "Metapod",
+        "icon": "$(checklist)"
+      },
+      {
+        "command": "metapod.configure",
+        "title": "Configure Agent Settings",
+        "category": "Metapod",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "metapod.showProgress",
+        "title": "Show Progress Panel",
+        "category": "Metapod",
+        "icon": "$(graph)"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "metapod.activate",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "metapod.refactor",
+          "when": "metapod.active"
+        },
+        {
+          "command": "metapod.research",
+          "when": "metapod.active"
+        },
+        {
+          "command": "metapod.status",
+          "when": "metapod.active"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "metapod.refactor",
+          "when": "metapod.active && explorerResourceIsFolder",
+          "group": "metapod@1"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "metapod.refactor",
+          "when": "metapod.active",
+          "group": "metapod@1"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "metapodProgress",
+          "name": "Metapod Progress",
+          "when": "metapod.active"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "metapod",
+          "title": "Metapod Agent",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Metapod",
+      "properties": {
+        "metapod.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to Python executable for running Metapod"
+        },
+        "metapod.agentPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to Metapod agent installation"
+        },
+        "metapod.autonomyLevel": {
+          "type": "string",
+          "enum": ["full", "interactive", "guided"],
+          "default": "interactive",
+          "description": "Level of autonomy for the agent"
+        },
+        "metapod.riskTolerance": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "default": "medium",
+          "description": "Risk tolerance for refactoring changes"
+        },
+        "metapod.stackPreference": {
+          "type": "string",
+          "enum": ["lovable-supabase-github", "python-fastapi", "node-express", "go-gin", "auto-detect"],
+          "default": "auto-detect",
+          "description": "Preferred technology stack"
+        },
+        "metapod.enableResearch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable web research for best practices"
+        },
+        "metapod.showProgressNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show progress notifications during refactoring"
+        }
+      }
+    },
+    "taskDefinitions": [
+      {
+        "type": "metapod",
+        "required": ["command"],
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "The Metapod command to run"
+          },
+          "args": {
+            "type": "array",
+            "description": "Additional arguments for the command"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "16.x",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}

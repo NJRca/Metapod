@@ -1,0 +1,154 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Metapod: Start Autonomous Refactoring",
+      "type": "shell",
+      "command": "python3",
+      "args": ["${workspaceFolder}/cli.py", "${input:projectPath}", "${input:refactorRequest}"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Start autonomous refactoring with Metapod agent",
+      "icon": {
+        "id": "robot",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "Metapod: Interactive Mode",
+      "type": "shell",
+      "command": "python3",
+      "args": ["${workspaceFolder}/cli.py", "${input:projectPath}", "--interactive"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Run Metapod in interactive mode",
+      "icon": {
+        "id": "comment-discussion",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "Metapod: Research Best Practices",
+      "type": "shell",
+      "command": "python3",
+      "args": ["${workspaceFolder}/cli.py", "${input:projectPath}", "--interactive"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "detail": "Research best practices for a specific topic",
+      "icon": {
+        "id": "search",
+        "color": "terminal.ansiYellow"
+      }
+    },
+    {
+      "label": "Metapod: Show Demo",
+      "type": "shell", 
+      "command": "python3",
+      "args": ["${workspaceFolder}/demo.py"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Show Metapod demonstration",
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiMagenta"
+      }
+    },
+    {
+      "label": "Metapod: Run Tests",
+      "type": "shell",
+      "command": "python3",
+      "args": ["-m", "pytest", "${workspaceFolder}/test_metapod.py", "-v"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "detail": "Run Metapod test suite",
+      "icon": {
+        "id": "beaker",
+        "color": "terminal.ansiCyan"
+      }
+    },
+    {
+      "label": "Metapod: Setup Dependencies",
+      "type": "shell",
+      "command": "bash",
+      "args": ["${workspaceFolder}/setup.sh"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Setup Metapod dependencies and configuration",
+      "icon": {
+        "id": "gear",
+        "color": "terminal.ansiWhite"
+      }
+    },
+    {
+      "label": "Metapod: Register as VSCode Agent",
+      "type": "shell",
+      "command": "python3",
+      "args": ["${workspaceFolder}/vscode_agent.py"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "detail": "Register Metapod as a VSCode agent",
+      "icon": {
+        "id": "extensions",
+        "color": "terminal.ansiBlue"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "projectPath",
+      "description": "Path to the project to refactor",
+      "default": "${workspaceFolder}",
+      "type": "promptString"
+    },
+    {
+      "id": "refactorRequest",
+      "description": "What would you like Metapod to refactor?",
+      "default": "Begin autonomous refactoring",
+      "type": "promptString"
+    }
+  ]
+}

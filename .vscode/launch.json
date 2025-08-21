@@ -1,0 +1,68 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Metapod CLI",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["${workspaceFolder}", "--verbose", "Debug refactoring session"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": false,
+      "stopOnEntry": false
+    },
+    {
+      "name": "Debug Metapod Agent",
+      "type": "python", 
+      "request": "launch",
+      "program": "${workspaceFolder}/metapod.py",
+      "args": ["${workspaceFolder}", "Debug session"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}",
+        "METAPOD_DEBUG": "1"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "Debug Demo",
+      "type": "python",
+      "request": "launch", 
+      "program": "${workspaceFolder}/demo.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Debug Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${workspaceFolder}/test_metapod.py", "-v", "-s"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "Debug VSCode Agent Registration",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/vscode_agent.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    }
+  ]
+}

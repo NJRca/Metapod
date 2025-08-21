@@ -1,0 +1,91 @@
+# Metapod Configuration File
+# Customize the behavior of the autonomous refactoring agent
+
+# Project settings
+project:
+  name: "My Backend Project"
+  stack: "lovable-supabase-github"  # Options: lovable-supabase-github, python-fastapi, node-express, go-gin
+  language: "python"  # Primary language: python, javascript, typescript, go
+  
+# Agent behavior
+agent:
+  autonomy_level: "full"  # Options: full, interactive, guided
+  risk_tolerance: "medium"  # Options: low, medium, high
+  batch_size: 5  # Number of files to process in one batch
+  
+# Architecture preferences
+architecture:
+  style: "hexagonal"  # Options: hexagonal, layered, clean
+  error_handling: "rfc9457"  # RFC 9457 Problem Details
+  validation: "comprehensive"  # Validate all inputs
+  observability: "full"  # Complete observability stack
+  
+# Security requirements
+security:
+  owasp_level: "level2"  # OWASP ASVS level: level1, level2, level3
+  pii_handling: "strict"  # PII handling: permissive, strict, paranoid
+  secret_management: "env_vars"  # Options: env_vars, vault, secrets_manager
+  
+# Quality gates
+quality:
+  test_coverage_threshold: 90  # Minimum test coverage percentage
+  performance_budget: true  # Enforce performance budgets
+  security_scan: true  # Run security scans
+  dependency_check: true  # Check for vulnerable dependencies
+  
+# CI/CD integration
+cicd:
+  platform: "github_actions"  # Options: github_actions, gitlab_ci, jenkins
+  deploy_strategy: "blue_green"  # Options: rolling, blue_green, canary
+  feature_flags: true  # Use feature flags for rollout
+  
+# Observability
+observability:
+  logging:
+    format: "json"  # Options: json, text
+    level: "info"  # Options: debug, info, warn, error
+    correlation_ids: true
+  
+  metrics:
+    provider: "prometheus"  # Options: prometheus, datadog, cloudwatch
+    red_metrics: true  # Rate, Errors, Duration
+    custom_metrics: true
+  
+  tracing:
+    provider: "opentelemetry"  # Options: opentelemetry, jaeger, zipkin
+    sample_rate: 0.1  # Trace sampling rate
+  
+# Stack-specific configurations
+stacks:
+  python:
+    framework: "fastapi"  # Options: fastapi, django, flask
+    orm: "sqlalchemy"  # Options: sqlalchemy, django_orm, peewee
+    validation: "pydantic"  # Options: pydantic, marshmallow, cerberus
+    
+  nodejs:
+    framework: "express"  # Options: express, nestjs, koa
+    orm: "prisma"  # Options: prisma, typeorm, sequelize
+    validation: "zod"  # Options: zod, joi, yup
+    
+  go:
+    framework: "gin"  # Options: gin, echo, fiber
+    orm: "gorm"  # Options: gorm, sqlx, ent
+    validation: "validator"  # Options: validator, go-playground
+
+# Research settings
+research:
+  enabled: true  # Enable web research for best practices
+  source_limit: 5  # Max sources to research per topic
+  cache_duration: 3600  # Cache research results (seconds)
+  
+# Output preferences
+output:
+  verbosity: "normal"  # Options: minimal, normal, verbose, debug
+  progress_updates: true  # Show progress during execution
+  generate_docs: true  # Auto-generate documentation
+  
+# Rollback settings
+rollback:
+  auto_backup: true  # Create backups before changes
+  validation_timeout: 300  # Seconds to wait for validation
+  rollback_on_failure: true  # Auto-rollback on critical failures
